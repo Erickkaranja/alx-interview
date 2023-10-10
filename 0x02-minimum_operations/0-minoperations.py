@@ -1,7 +1,14 @@
 #!/usr/bin/python3
 '''calculating minimum number of operations to execute.'''
 
+
 def minOperations(n):
+    '''creates a function to get minimum operation.
+       args:
+           n (int): integer input.
+       Returns:
+           the minimum numder of operation.
+    '''
     if n <= 1:
         return 0
     dp = [float('inf')] * (n + 1)
