@@ -1,0 +1,1 @@
+Mininal operations query finds the minimum number of operations required to execote.In a text file, there is a single character H. Your text editor can execute only two operations in this file: Copy All and Paste. Given a number n, we should find the minimum operations required.
