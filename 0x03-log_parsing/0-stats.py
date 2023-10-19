@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 import sys
 import re
@@ -37,4 +37,7 @@ try:
 
 except KeyboardInterrupt:
     # Handle Ctrl+C by printing the statistics
-    pass
+    print(f'Total file size: {total_size}')
+    for code, count in sorted(status_counts.items()):
+        if count > 0:
+            print(f'{code}: {count}')
