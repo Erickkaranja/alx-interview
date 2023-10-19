@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-
+'''creating a log parsing method.'''
 import sys
 import re
 
-# Define the regular expression pattern to match the input format
 pattern = r'^(\S+) - \[.*\] "GET /projects/260 HTTP/1\.1" (\d+) (\d+)$'
 
 # Initialize variables to store metrics
@@ -14,7 +13,6 @@ line_count = 0
 
 try:
     for line in sys.stdin:
-        # Match the line against the pattern
         match = re.match(pattern, line)
         if match:
             # Extract status code and file size
