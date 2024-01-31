@@ -1,20 +1,24 @@
 #!/usr/bin/python3
 '''lock boxes study question.'''
-from collections import deque
 
 
 def canUnlockAll(boxes):
     '''defining function canUnlockAll.'''
-    n = len(boxes)
-    visited = set()
-    queue = deque([0])  # Start from the first box (box 0)
+    check_list = [i for i in range(1, len(boxes))]
+    for i in range(0, len(boxes)):
+        for key in boxes[i]:
+            if key != i:
+                if key in check_list:
+                    check_list.remove(key)
+    if len(check_list) == 0:
+        return True
+    return False
 
-    while queue:
-        current_box = queue.popleft()
-        visited.add(current_box)
+boxes = [[1], [2], [3], [4], []]
+print(canUnlockAll(boxes))
 
-        for key in boxes[current_box]:
-            if key not in visited and key < n:
-                queue.append(key)
+boxes = [[1, 4, 6], [2], [0, 4, 1], [5, 6, 2], [3], [4, 1], [6]]
+print(canUnlockAll(boxes))
 
-    return len(visited) == n
+boxes = [[1, 4], [2], [0, 4, 1], [3], [], [4, 1], [5, 6]]
+print(canUnlockAll(boxes))
