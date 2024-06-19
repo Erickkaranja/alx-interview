@@ -22,8 +22,8 @@ def makeChange(coins, total):
     for i in range(1, total + 1):
         for coin in coins:
             if i - coin < 0:
-               break;
+                break
             my_array[i] = min(my_array[i], 1 + my_array[i - coin])
-    if my_array[total] == total:
+    if 1 not in coins and my_array[total] == total:
         return -1
     return my_array[total]
