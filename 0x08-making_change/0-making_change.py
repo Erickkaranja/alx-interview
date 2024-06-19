@@ -13,16 +13,17 @@ def makeChange(coins, total):
           if no change can be returned -2
           else count of minimum coins to give change.`
     """
-    coins = sorted(coins, reverse=True)
-    count = 0
-    while total and total > 0:
-        check_count = 0
+    if total == 0:
+        return 0
+    if len(coins) == 1 and coins[0] == 1:
+        return total
+    my_array = [total] * (total + 1)
+    my_array[0] = 0
+    for i in range(1, total + 1):
         for coin in coins:
-            check_count = total // coin
-            count += check_count
-            total -= coin * check_count
-            continue
-        if total != 0:
-            return -1
-        return count
-    return 0
+            if i - coin < 0:
+               break;
+            my_array[i] = min(my_array[i], 1 + my_array[i - coin])
+    if my_array[total] == total:
+        return -1
+    return my_array[total]
